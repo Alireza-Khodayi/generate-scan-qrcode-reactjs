@@ -4,7 +4,7 @@ import Input from "./UI/Input";
 import QRCode from "qrcode";
 
 const GenerateQrCode = () => {
-  const [text, setText] = useState();
+  const [text, setText] = useState('');
   const [qrCodeImage, setQrCodeImage] = useState();
   const [qrCodeText, setQrCodeText] = useState();
 
