@@ -43,6 +43,7 @@ const ScanQrCode = () => {
               onResult={(result, error) => {
                 if (!!result) {
                   setScanResultFile(result?.text);
+                  
                 }
 
                 if (!!error) {
