@@ -20,6 +20,7 @@ const ScanQrCode = () => {
   const onScanFile = () => {
     setIsScaning(!isScaning);
     if (isScaning === true) {
+      //closeCame();
       window.location.reload();
     }
   };
