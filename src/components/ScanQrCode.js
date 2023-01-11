@@ -2,26 +2,25 @@ import React, { useState, useRef } from "react";
 import { QrReader } from "react-qr-reader";
 
 const ScanQrCode = () => {
-  const qrRef = useRef(null);
+  const qrRef = useRef();
   const [scanResultFile, setScanResultFile] = useState();
   const [isScaning, setIsScaning] = useState(false);
 
-  const closeCam = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: false,
-      video: true,
-    });
-    stream.getTracks().forEach(function (track) {
-      track.stop();
-      track.enabled = false;
-    });
-    window.location.reload();
-  };
+  // const closeCam = async () => {
+  //   const stream = await navigator.mediaDevices.getUserMedia({
+  //     audio: false,
+  //     video: true,
+  //   });
+  //   stream.getTracks().forEach(function (track) {
+  //     track.stop();
+  //     track.enabled = false;
+  //   });
+  // };
 
   const onScanFile = () => {
     setIsScaning(!isScaning);
     if (isScaning === true) {
-      closeCam();
+      window.location.reload();
     }
   };
   
@@ -33,7 +32,7 @@ const ScanQrCode = () => {
           onClick={onScanFile}
           className="bg-yellow-400 px-8 py-2 rounded-md text-white hover:bg-yellow-500 shadow-md hover:scale-x-105 hover:shadow-lg transition-all duration-300 active:bg-yellow-600"
         >
-        {isScaning ? 'Stop Scan !' : 'Start Scan'}
+        {isScaning ? 'Stop Scan !' : 'Start Scan !'}
         </button>
         <div className="w-2/3">
           {isScaning ? (
@@ -50,7 +49,7 @@ const ScanQrCode = () => {
                   console.log(error);
                 }
               }}
-              legacyMode
+              
             />
           ) : (
             ""
